@@ -1,4 +1,4 @@
-# SublimeFlatColors [![Gittip](http://badgr.co/gittip/jbrooksuk.png)](https://www.gittip.com/jbrooksuk/)
+# SublimeFlatColors
 SublimeFlatColors is a plugin for the growing popular editor [Sublime Text](http://www.sublimetext.com). It simply lists all Flat UI color names `nephritis, carrot, emerland` etc and expands them to their representing hex codes.
 
 ## Compatibility
