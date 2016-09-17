@@ -1,26 +1,26 @@
 import sublime, sublime_plugin
 
 flatuicolors = {
-	"turquoise":     "#1dd2af",
-	"green-sea":     "#19b698",
-	"emerland":      "#40d47e",
-	"nephritis":     "#2cc36b",
-	"peter-river":   "#4aa3df",
-	"belize-hole":   "#2e8ece",
-	"amethyst":      "#a66bbe",
-	"wisteria":      "#9b50ba",
-	"wet-asphalt":   "#3d566e",
-	"midnight-blue": "#354b60",
-	"sun-flower":    "#f2ca27",
-	"orange":        "#f4a62a",
-	"carrot":        "#e98b39",
-	"pumpkin":       "#ec5e00",
-	"alizarin":      "#ea6153",
-	"pomegranate":   "#d14233",
-	"clouds":        "#fbfcfc",
-	"silver":        "#cbd0d3",
-	"concrete":      "#a3b1b2",
-	"asbestos":      "#8c9899"
+	"turquoise":     "#1DD2AF",
+	"green-sea":     "#19B698",
+	"emerland":      "#40D47E",
+	"nephritis":     "#2CC36B",
+	"peter-river":   "#4AA3DF",
+	"belize-hole":   "#2E8ECE",
+	"amethyst":      "#A66BBE",
+	"wisteria":      "#9B50BA",
+	"wet-asphalt":   "#3D566E",
+	"midnight-blue": "#354B60",
+	"sun-flower":    "#F2CA27",
+	"orange":        "#F4A62A",
+	"carrot":        "#E98B39",
+	"pumpkin":       "#EC5E00",
+	"alizarin":      "#EA6153",
+	"pomegranate":   "#D14233",
+	"clouds":        "#FBFCFC",
+	"silver":        "#CBD0D3",
+	"concrete":      "#A3B1B2",
+	"asbestos":      "#8C9899"
 }
 
 class FlatColorsCommand(sublime_plugin.WindowCommand):
@@ -40,7 +40,7 @@ class FlatColorsCommand(sublime_plugin.WindowCommand):
 
 	def generateColorDialog(self):
 		for name, color in flatuicolors.items():
-			self.colorList.append([name, color.upper()])
+			self.colorList.append([name.title(), color.upper()])
 
 
 class InsertFlatColorsCommand(sublime_plugin.TextCommand):
@@ -51,7 +51,7 @@ class InsertFlatColorsCommand(sublime_plugin.TextCommand):
 
 class FlatColorsCompleteCommand(sublime_plugin.EventListener):
 	def on_query_completions(self, view, prefix, locations):
-		if not view.match_selector(locations[0], 'source.css'):
+		if not view.match_selector(locations[0], 'source.css, source.stylus, source.sass, source.scss, source.postcss'):
 			return []
 
-		return[(str(x),) * 2 for x in flatuicolors]
+		return[(name + '\t' + hex, hex) for name, hex in flatuicolors.items()]
