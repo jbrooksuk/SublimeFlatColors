@@ -14,3 +14,4 @@ Completions will only be displayed when the cursor is under a CSS scope. This is
 
 ## License
 MIT - [http://jbrooksuk.mit-license.org](http://jbrooksuk.mit-license.org)
+
